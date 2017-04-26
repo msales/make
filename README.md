@@ -1,0 +1,1 @@
+Common make files for [Modern Make](https://github.com/tj/mmake).
