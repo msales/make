@@ -6,5 +6,5 @@ todo:
 		--exclude-dir=./vendor \
 		--text \
 		--color \
-		-nRo ' TODO:.*' .
+		-nRo 'TODO:.*' . || true
 .PHONY: todo

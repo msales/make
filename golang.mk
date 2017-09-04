@@ -8,12 +8,12 @@ build:
 
 # Run all tests
 test:
-	@go test -cover $(shell go list ./... | grep -v /vendor/)
+	@go test -cover ./...
 .PHONY: test
 
 # Vet the project
 vet:
-	@go vet $(shell go list ./... | grep -v /vendor/)
+	@go vet ./...
 .PHONY: vet
 
 # Run CI tasks
