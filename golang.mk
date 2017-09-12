@@ -18,7 +18,7 @@ vet:
 
 # Lint the project
 lint:
-	@golint $(go list ./... | grep -vF /vendor/)
+	@golint $(shell go list ./... | grep -v /vendor/)
 .PHONY: lint
 
 # Run CI tasks
