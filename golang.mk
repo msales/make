@@ -16,6 +16,11 @@ vet:
 	@go vet ./...
 .PHONY: vet
 
+# Lint the project
+lint:
+	@golint $(go list ./... | grep -vF /vendor/)
+.PHONY: lint
+
 # Run CI tasks
 ci: build vet test
 .PHONY: ci
