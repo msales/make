@@ -21,8 +21,12 @@ lint:
 	@golint $(shell go list ./... | grep -v /vendor/)
 .PHONY: lint
 
+# Data race detector
+race:
+	@go test -race ./...
+
 # Run CI tasks
-ci: build vet test
+ci: lint build vet test race
 .PHONY: ci
 
 # Format all files
