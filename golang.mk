@@ -32,6 +32,13 @@ ci: lint build vet test race
 # Format all files
 fmt:
 	@echo "==> Formatting source"
-	@gofmt -s -w .
+	@gofmt -s -w $(shell go list -f {{.Dir}} ./... | grep -v /vendor/)
 	@echo "==> Done"
 .PHONY: fmt
+
+# Format all files and fix imports
+imports:
+	@echo "==> Formatting source"
+	@goimports -w $(shell go list -f {{.Dir}} ./... | grep -v /vendor/)
+	@echo "==> Done"
+.PHONY: imports
