@@ -35,3 +35,10 @@ fmt:
 	@gofmt -s -w .
 	@echo "==> Done"
 .PHONY: fmt
+
+# Format all files and fix imports
+imports:
+	@echo "==> Formatting source"
+	@goimports -w .
+	@echo "==> Done"
+.PHONY: imports
