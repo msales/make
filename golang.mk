@@ -1,5 +1,6 @@
 include github.com/msales/make/bump
 include github.com/msales/make/todo
+include github.com/msales/make/env
 
 # Build the commands
 build:
@@ -42,9 +43,3 @@ imports:
 	@goimports -w $(shell find . -type f -name '*.go' -not -path "./vendor/*")
 	@echo "==> Done"
 .PHONY: imports
-
-.env:
-	@cp .env.dist .env
-
-# Create the .env file from the defaults (.env.dist)
-env: .env

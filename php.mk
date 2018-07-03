@@ -1,5 +1,6 @@
 include github.com/msales/make/bump
 include github.com/msales/make/todo
+include github.com/msales/make/env
 
 # Run all tests
 test:
