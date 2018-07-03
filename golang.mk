@@ -42,3 +42,9 @@ imports:
 	@goimports -w $(shell find . -type f -name '*.go' -not -path "./vendor/*")
 	@echo "==> Done"
 .PHONY: imports
+
+.env:
+	@cp .env.dist .env
+
+# Create the .env file from the defaults (.env.dist)
+env: .env
