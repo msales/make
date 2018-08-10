@@ -43,3 +43,12 @@ imports:
 	@goimports -w $(shell find . -type f -name '*.go' -not -path "./vendor/*")
 	@echo "==> Done"
 .PHONY: imports
+
+# Install the vendor libraries with dep
+dep:
+	@echo "==> Installing vendors"
+	@dep ensure -v --vendor-only
+.PHONY: dep
+
+# Perform the initial setup for the project
+setup: env dep
