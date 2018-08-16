@@ -4,7 +4,7 @@ include github.com/msales/make/env
 
 # Build the commands
 build:
-	@go build ./cmd/...
+	@find ./cmd/* -maxdepth 1 -type d -exec go build {} \;
 .PHONY: build
 
 # Run all tests
