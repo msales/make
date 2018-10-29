@@ -1,4 +1,3 @@
-include github.com/msales/make/bump
 include github.com/msales/make/todo
 include github.com/msales/make/env
 
@@ -19,7 +18,7 @@ vet:
 
 # Lint the project
 lint:
-	@golint $(shell go list ./... | grep -v /vendor/)
+	@golint ./...
 .PHONY: lint
 
 # Data race detector
@@ -39,8 +38,15 @@ fmt:
 
 # Format all files and fix imports
 imports:
-	@echo "==> Formatting source"
+	@echo "==> Formatting imports"
 	@goimports -w $(shell find . -type f -name '*.go' -not -path "./vendor/*")
+	@echo "==> Done"
+.PHONY: imports
+
+# Tidy the go.mod file
+tidy:
+	@echo "==> Cleaning go.mod"
+	@go mod tidy
 	@echo "==> Done"
 .PHONY: imports
 
