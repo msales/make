@@ -36,12 +36,10 @@ fmt:
 	@echo "==> Done"
 .PHONY: fmt
 
-# Format all files and fix imports
-imports:
-	@echo "==> Formatting imports"
-	@goimports -w $(shell find . -type f -name '*.go' -not -path "./vendor/*")
-	@echo "==> Done"
-.PHONY: imports
+# Download the go.mod dependencies
+download:
+	@go mod download
+.PHONY: download
 
 # Tidy the go.mod file
 tidy:
@@ -50,11 +48,5 @@ tidy:
 	@echo "==> Done"
 .PHONY: imports
 
-# Install the vendor libraries with dep
-dep:
-	@echo "==> Installing vendors"
-	@dep ensure -v --vendor-only
-.PHONY: dep
-
 # Perform the initial setup for the project
-setup: env dep
+setup: env download
