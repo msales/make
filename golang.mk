@@ -50,3 +50,8 @@ tidy:
 
 # Perform the initial setup for the project
 setup: env download
+
+DIR = $(shell go list)/...
+staticcheck:
+	@staticcheck $(DIR)
+.PHONY: staticcheck
